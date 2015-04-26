@@ -12,36 +12,43 @@ void printgrid (int i, int j,int grid[10][10])
     }
     printf("\n");
 }
+
+void read_grid (char* fname, int grid[10][10])
+{
+	FILE* map;
+	char comma;
+	int i, j, k;
+	
+	map = fopen(fname, "r");
+	if(map == NULL)
+	{
+		printf("Opening file failed\n");
+	}
+	else
+	{
+		while(!feof(map))
+		{
+			for(k=0; k<10; k++)
+			{
+				for(i=0; i<10; i++)w
+				{
+					for(j=0; j<10; j++)
+					{
+						fscanf(map, "%d%c", &grid[i][j], &comma);
+					}
+				}
+			}
+		}
+	}
+	fclose(map);
+}		
+			
 int main()
 {
-    int grid[10][10] =
-    {
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,1,0,0,0,0,0,0,0,
-        1,0,1,0,0,0,0,0,0,0,
-        0,1,1,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-    };
-    int temp[10][10] =
-    {
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-    };
-
+    int grid[10][10];
+    int temp[10][10];
     int i, j, alive, dead, counter, timer;
+	read_grid("grid.txt", grid);
     printgrid (i,j,grid);
     alive=1;
     for(timer=0; timer<20; timer++)
