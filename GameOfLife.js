@@ -37,7 +37,7 @@ function countNeighbours(i, j){
 	return neighbours;
 }
 
-//generate neext generation
+//generate next generation
 function nextGen() {
 	for (i=1; i<=gridHeight; i++)
 	{
